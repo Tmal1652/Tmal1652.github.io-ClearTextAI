@@ -25,7 +25,7 @@ speakBtn.addEventListener('click', () => {
 });
 
 async function simplifyText(text) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  const response = await fetch('https://cleartextai-backend.onrender.com/simplify', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${OPENAI_API_KEY}`,
@@ -55,7 +55,7 @@ summarizeBtn.addEventListener('click', async () => {
 });
 
 async function summarizeText(text) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  const response = await fetch('https://cleartextai-backend.onrender.com/summarize', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${OPENAI_API_KEY}`,
