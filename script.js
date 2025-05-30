@@ -25,21 +25,21 @@ speakBtn.addEventListener('click', () => {
 });
 
 async function simplifyText(text) {
-  const response = await fetch('https://cleartextai-backend.onrender.com/simplify', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: `Simplify this text to a 6th grade level:\n\n${text}` }
-      ]
-    })
-  });
+  try {
+    const response = await fetch('https://cleartextai-backend.onrender.com/simplify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text })
+    });
 
-  const data = await response.json();
-  return data.choices[0].message.content;
+    const data = await response.json();
+    return data.result;
+  } catch (err) {
+    console.error("Error simplifying:", err);
+    return "There was an error simplifying your text.";
+  }
 }
 
 summarizeBtn.addEventListener('click', async () => {
@@ -54,21 +54,21 @@ summarizeBtn.addEventListener('click', async () => {
 });
 
 async function summarizeText(text) {
-  const response = await fetch('https://cleartextai-backend.onrender.com/summarize', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: `Summarize this text in 1-2 simple sentences:\n\n${text}` }
-      ]
-    })
-  });
+  try {
+    const response = await fetch('https://cleartextai-backend.onrender.com/summarize', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text })
+    });
 
-  const data = await response.json();
-  return data.choices[0].message.content;
+    const data = await response.json();
+    return data.result;
+  } catch (err) {
+    console.error("Error summarizing:", err);
+    return "There was an error summarizing your text.";
+  }
 }
 
 clearBtn.addEventListener('click', () => {
