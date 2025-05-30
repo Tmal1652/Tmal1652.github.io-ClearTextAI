@@ -28,7 +28,6 @@ async function simplifyText(text) {
   const response = await fetch('https://cleartextai-backend.onrender.com/simplify', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${OPENAI_API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -58,7 +57,6 @@ async function summarizeText(text) {
   const response = await fetch('https://cleartextai-backend.onrender.com/summarize', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${OPENAI_API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
