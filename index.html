@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClearText AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="floating-header">
+    <h1>ClearText AI</h1>
+  </header>
+
+  <main>
+    <div class="glass-columns">
+      <div class="input-panel">
+        <div class="input-group">
+          <label for="inputText">Enter Text:</label>
+          <textarea id="inputText" rows="8" placeholder="Paste complex text here..."></textarea>
+        </div>
+        <div class="buttons">
+          <button id="simplifyBtn"><i class="fas fa-brain"></i> Simplify</button>
+          <button id="summarizeBtn"><i class="fas fa-file-lines"></i> Summarize</button>
+          <button id="speakBtn"><i class="fas fa-volume-up"></i> Speak</button>
+          <button id="clearBtn"><i class="fas fa-broom"></i> Clear</button>
+        </div>
+      </div>
+      <div class="output-panel">
+        <div class="output-group">
+          <h2>Output:</h2>
+          <div id="output" tabindex="0"></div>
+          <div id="loadingIndicator" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <section class="about">
+      <h2>What is ClearText AI?</h2>
+      <p>
+        ClearText AI is a tool designed to support users with cognitive disabilities by summarizing complex web content into shorter, simpler sentences. It can also highlight key points, provide audio narration to aid memory, and offer interactive definitions for hard words to assist with learning and comprehension.
+      </p>
+      <ul>
+        <li>🔍 <strong>Text simplification:</strong> AI rewrites paragraphs at a 4th–6th grade reading level</li>
+        <li>🔊 <strong>Text-to-speech integration:</strong> Users can listen to content</li>
+        <li>🧠 <strong>Key point summarizer:</strong> Pulls out important ideas from a wall of text</li>
+        <li>📚 <strong>Word explainer:</strong> Hover over a word and get a short AI-generated definition with an example</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Tyler Malovrh. All rights reserved.
+  </footer>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
