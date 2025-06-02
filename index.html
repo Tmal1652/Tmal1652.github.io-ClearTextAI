@@ -22,11 +22,15 @@
           <label for="inputText">Enter Text:</label>
           <textarea id="inputText" rows="8" placeholder="Paste complex text here..."></textarea>
         </div>
-        <div class="buttons">
-          <button id="simplifyBtn"><i class="fas fa-brain"></i> Simplify</button>
-          <button id="summarizeBtn"><i class="fas fa-file-lines"></i> Summarize</button>
-          <button id="speakBtn"><i class="fas fa-volume-up"></i> Speak</button>
-          <button id="clearBtn"><i class="fas fa-broom"></i> Clear</button>
+        <div class="floating-tab-bar">
+          <button id="simplifyBtn"><i class="fas fa-brain"></i><span>Simplify</span></button>
+          <button id="summarizeBtn"><i class="fas fa-file-lines"></i><span>Summarize</span></button>
+          <button id="speakBtn"><i class="fas fa-volume-up"></i><span>Speak</span></button>
+          <button id="explainBtn" type="button" title="This feature is in development and may not work as expected.">
+            <i class="fas fa-book-open"></i>
+            <span>Word Explainer <sup style="font-size: 0.65em; color: orange;">Beta</sup></span>
+          </button>
+          <button id="clearBtn"><i class="fas fa-broom"></i><span>Clear</span></button>
         </div>
       </div>
       <div class="output-panel">
@@ -46,14 +50,14 @@
         <li>🔍 <strong>Text simplification:</strong> AI rewrites content into clear, concise language that's easier to understand</li>
         <li>🔊 <strong>Text-to-speech integration:</strong> Users can listen to content</li>
         <li>🧠 <strong>Key point summarizer:</strong> Pulls out important ideas from a wall of text</li>
-        <li>📚 <strong>Word explainer:</strong> Hover over a word and get a short AI-generated definition with an example <em>(In development)</em></li>
+        <li>📚 <strong>Word explainer:</strong> Identify and define complex words <em>(In development)</em></li>
       </ul>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Tyler Malovrh. All rights reserved.</p>
-    <p><strong>Version:</strong> v0.9.0 Beta — This tool is still in development.</p>
+    <p><strong>Version:</strong> v0.9.1 Beta — This tool is still in development.</p>
   </footer>
   <script src="script.js"></script>
 </body>

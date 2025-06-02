@@ -99,7 +99,7 @@ textarea {
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.5rem;
   box-sizing: border-box;
 }
 
@@ -457,6 +457,10 @@ footer {
   align-items: center; /* Center content horizontally */
 }
 
+.output-panel {
+  gap: 0.75rem;
+}
+
 .input-panel h2,
 .output-panel h2 {
   margin: 0 0 0.5rem;
@@ -589,5 +593,113 @@ button {
 @media (prefers-color-scheme: dark) {
   button {
     color: #fff;
+  }
+}
+/* Floating Tab Bar Styles */
+.floating-tab-bar {
+  /* position: fixed; */
+  /* bottom: 2rem; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 32px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+  /* z-index: 1000; */
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.6rem 1.5rem;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+}
+
+.floating-tab-bar button {
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.65rem 1.25rem;
+  border-radius: 24px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.floating-tab-bar button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.floating-tab-bar button i {
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+.floating-tab-bar button:hover i {
+  text-shadow: 0 0 8px #7c3cff, 0 0 14px #00bfff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .floating-tab-bar {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 123, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+  }
+
+  .floating-tab-bar button {
+    color: #eee;
+  }
+
+  .floating-tab-bar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #00bfff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  body, .glass-card, .floating-header, textarea, button, #output, .about, .input-panel, .output-panel, .floating-tab-bar {
+    background-color: #1e1e2f !important;
+    color: #eee !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  #output, #output.active {
+    /* Maintain visible blue glow in light mode */
+    box-shadow: 0 0 18px rgba(0, 123, 255, 0.3), 0 0 28px rgba(0, 123, 255, 0.2) !important;
+  }
+
+  .floating-tab-bar {
+    background: rgba(0, 0, 0, 0.6) !important;
+    /* Maintain visible blue glow in light mode */
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.3), 0 0 20px rgba(0, 123, 255, 0.2) !important;
+  }
+
+  button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+  }
+
+  .floating-tab-bar button {
+    color: #eee !important;
+  }
+
+  .floating-tab-bar button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #00bfff !important;
   }
 }
