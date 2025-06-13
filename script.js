@@ -10,23 +10,36 @@ const wordExplainerBtn = document.getElementById('explainBtn'); // Fix: match th
 const definitionBox = document.getElementById('definitionBox');
 
 const accessibilityToggle = document.getElementById('accessibilityToggle');
-const body = document.body;
+
+// Ensure it's focusable via keyboard
+accessibilityToggle?.setAttribute('tabindex', '0');
+accessibilityToggle?.setAttribute('role', 'button');
+accessibilityToggle?.setAttribute('aria-label', 'Toggle Accessibility Mode');
 
 accessibilityToggle?.addEventListener('click', () => {
-  body.classList.toggle('accessibility-mode');
+  document.body.classList.toggle('accessibility-mode');
+  accessibilityToggle.setAttribute(
+    'aria-pressed',
+    document.body.classList.contains('accessibility-mode').toString()
+  );
 });
 
-// Optional: Keyboard accessibility (toggle with Enter/Space)
 accessibilityToggle?.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
-    body.classList.toggle('accessibility-mode');
     e.preventDefault();
+    document.body.classList.toggle('accessibility-mode');
+    accessibilityToggle.setAttribute(
+      'aria-pressed',
+      document.body.classList.contains('accessibility-mode').toString()
+    );
   }
 });
 
 simplifyBtn.addEventListener('click', async () => {
   const userText = inputText.value;
   loadingIndicator.textContent = "Simplifying...";
+  loadingIndicator.setAttribute('aria-live', 'polite');
+  loadingIndicator.setAttribute('role', 'status');
   const simplified = await simplifyText(userText);
   output.classList.remove("active");
   void output.offsetWidth; // trigger reflow
@@ -61,6 +74,8 @@ async function simplifyText(text) {
 summarizeBtn.addEventListener('click', async () => {
   const userText = inputText.value;
   loadingIndicator.textContent = "Summarizing...";
+  loadingIndicator.setAttribute('aria-live', 'polite');
+  loadingIndicator.setAttribute('role', 'status');
   const summary = await summarizeText(userText);
   output.classList.remove("active");
   void output.offsetWidth; // trigger reflow
@@ -98,11 +113,15 @@ wordExplainerBtn.addEventListener('click', async () => {
   console.log("Word Explainer clicked with text:", text);
 
   output.innerHTML = '';
+  output.setAttribute('aria-live', 'polite');
+  output.setAttribute('role', 'region');
   if (!text) {
     output.textContent = "Please enter a word to explain.";
     return;
   }
   loadingIndicator.textContent = "Explaining...";
+  loadingIndicator.setAttribute('aria-live', 'polite');
+  loadingIndicator.setAttribute('role', 'status');
   loadingIndicator.classList.add("loading");
 
   const words = text.split(/\s+/);
@@ -157,3 +176,41 @@ function speak(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   speechSynthesis.speak(utterance);
 }
+
+function trapFocus(container) {
+  const focusableElements = container.querySelectorAll('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])');
+  const first = focusableElements[0];
+  const last = focusableElements[focusableElements.length - 1];
+
+  container.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+accessibilityToggle?.addEventListener('click', () => {
+  if (document.body.classList.contains('accessibility-mode')) {
+    trapFocus(document.body);
+    // Visually indicate accessibility mode
+    document.body.classList.add('accessibility-highlight');
+    setTimeout(() => {
+      document.body.classList.remove('accessibility-highlight');
+    }, 1500);
+
+    // Announce mode change
+    const announce = document.createElement('div');
+    announce.setAttribute('role', 'status');
+    announce.setAttribute('aria-live', 'polite');
+    announce.className = 'sr-only';
+    announce.textContent = 'Accessibility mode enabled';
+    document.body.appendChild(announce);
+    setTimeout(() => announce.remove(), 2000);
+  }
+});
