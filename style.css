@@ -1,3 +1,140 @@
+/* --- Liquid Glass UI Overhaul --- */
+
+/* 1. Animated liquid glass background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(0,123,255,0.10) 0%, rgba(255,255,255,0.04) 100%),
+              linear-gradient(120deg, #7c3cff55 0%, #00bfff33 100%);
+  filter: blur(32px) saturate(1.2);
+  pointer-events: none;
+  animation: glassFlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes glassFlow {
+  0% { background-position: 60% 40%, 0% 0%; }
+  100% { background-position: 40% 60%, 100% 100%; }
+}
+
+/* 2. Glass columns and panels */
+.glass-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.input-panel,
+.output-panel {
+  flex: 1 1 320px;
+  min-width: 300px;
+  max-width: 520px;
+  margin: 1rem 0;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 2rem;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 8px 40px 0 rgba(0,123,255,0.13), 0 1.5px 24px 0 rgba(124,60,255,0.12);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  transition: box-shadow 0.4s cubic-bezier(.4,2,.6,1), background 0.4s;
+  position: relative;
+  z-index: 2;
+  color: #f7f7fa;
+}
+
+/* 3. Floating header glass effect */
+.floating-header {
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px) saturate(1.3);
+  border: 1.5px solid rgba(0,123,255,0.12);
+  box-shadow: 0 2px 18px 0 rgba(0,123,255,0.09);
+  color: #222;
+}
+
+/* 4. Inputs and outputs glass style */
+textarea, #output, #output.active {
+  background: rgba(255,255,255,0.13);
+  border: 1.5px solid rgba(0,123,255,0.18);
+  box-shadow: 0 0 18px rgba(0,123,255,0.13);
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(12px) saturate(1.2);
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+/* 5. Modern button style */
+.floating-tab-bar button {
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(0,123,255,0.18);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2rem;
+  box-shadow: 0 2px 12px rgba(0,123,255,0.10);
+  backdrop-filter: blur(8px) saturate(1.2);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.floating-tab-bar button:hover {
+  background: rgba(0,123,255,0.18);
+  color: #fff;
+  box-shadow: 0 0 18px #7c3cff55, 0 0 24px #00bfff33;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* 6. Responsive: stack panels on mobile */
+@media (max-width: 900px) {
+  .glass-columns {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  .input-panel,
+  .output-panel {
+    max-width: 98vw;
+    margin: 0 auto;
+  }
+}
+
+/* 7. Accessibility: readable text */
+body, .input-panel, .output-panel, textarea, #output, .floating-header {
+  color: #f7f7fa;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.10);
+  background: none;
+}
+
+/* 8. Subtle glowing border on focus */
+textarea:focus, .floating-tab-bar button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff55;
+  border-color: #00bfff;
+}
+
+/* 9. Fade-in for panels and about section */
+.input-panel, .output-panel, .about {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInGlass 1.1s cubic-bezier(.4,2,.6,1) forwards;
+}
+
+@keyframes fadeInGlass {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- End Liquid Glass UI Overhaul --- */
+
 /* Output fade-in animation */
 #output,
 #output.active {
@@ -668,38 +805,5 @@ button {
   .floating-tab-bar button:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #00bfff;
-  }
-}
-@media (prefers-color-scheme: light) {
-  body, .glass-card, .floating-header, textarea, button, #output, .about, .input-panel, .output-panel, .floating-tab-bar {
-    background-color: #1e1e2f !important;
-    color: #eee !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
-  }
-
-  #output, #output.active {
-    /* Maintain visible blue glow in light mode */
-    box-shadow: 0 0 18px rgba(0, 123, 255, 0.3), 0 0 28px rgba(0, 123, 255, 0.2) !important;
-  }
-
-  .floating-tab-bar {
-    background: rgba(0, 0, 0, 0.6) !important;
-    /* Maintain visible blue glow in light mode */
-    box-shadow: 0 0 12px rgba(0, 123, 255, 0.3), 0 0 20px rgba(0, 123, 255, 0.2) !important;
-  }
-
-  button {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #fff !important;
-  }
-
-  .floating-tab-bar button {
-    color: #eee !important;
-  }
-
-  .floating-tab-bar button:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #00bfff !important;
   }
 }
