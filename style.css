@@ -515,6 +515,85 @@ button:active {
   }
 }
 
+/* --- Mobile Experience Enhancements --- */
+
+@media (max-width: 768px) {
+  /* Stack panels vertically */
+  .glass-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  /* Adjust input and output panels */
+  .input-panel,
+  .output-panel {
+    min-width: unset;
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  /* Increase button sizes for touch targets */
+  .floating-tab-bar button {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  /* Adjust textarea for better usability */
+  textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+  }
+
+  /* Ensure header fits smaller screens */
+  .floating-header {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Adjust about section */
+  .about {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Footer adjustments */
+  footer {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .floating-tab-bar button {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .floating-header {
+    font-size: 1rem;
+  }
+
+  .about {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.7rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(135deg, #1e1e2f, #121218);
