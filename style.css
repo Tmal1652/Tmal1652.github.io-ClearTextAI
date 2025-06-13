@@ -525,6 +525,18 @@ button:active {
     padding: 1rem;
   }
 
+  /* Ensure .input-container and .output-container use full width and proper margin */
+  .input-container,
+  .output-container {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  /* Add extra spacing below output container for tab bar */
+  .output-container {
+    margin-bottom: 3rem;
+  }
+
   /* Refined input and output panels for mobile */
   .input-panel,
   .output-panel {
@@ -538,11 +550,32 @@ button:active {
     line-height: 1.6;
   }
 
-  /* Increase button sizes for touch targets */
-  .floating-tab-bar button {
-    padding: 0.75rem 1rem;
+  /* Refactor header h1 inside mobile view */
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive font sizes for input fields and buttons */
+  input[type="text"], textarea, button {
     font-size: 1rem;
-    border-radius: 1.5rem;
+  }
+
+  /* Touch-friendly button sizes */
+  button {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Update .floating-tab-bar for better visibility and spacing */
+  .floating-tab-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 360px;
   }
 
   /* Adjust textarea for better usability */
