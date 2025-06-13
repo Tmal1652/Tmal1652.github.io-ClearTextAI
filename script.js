@@ -15,6 +15,7 @@ const accessibilityToggle = document.getElementById('accessibilityToggle');
 accessibilityToggle?.setAttribute('tabindex', '0');
 accessibilityToggle?.setAttribute('role', 'button');
 accessibilityToggle?.setAttribute('aria-label', 'Toggle Accessibility Mode');
+accessibilityToggle?.setAttribute('title', 'Enable accessibility mode');
 
 accessibilityToggle?.addEventListener('click', () => {
   document.body.classList.toggle('accessibility-mode');
@@ -113,6 +114,8 @@ wordExplainerBtn.addEventListener('click', async () => {
   console.log("Word Explainer clicked with text:", text);
 
   output.innerHTML = '';
+  wordExplainerBtn.setAttribute('aria-label', 'Word Explainer button – activated');
+  wordExplainerBtn.setAttribute('aria-pressed', 'true');
   output.setAttribute('aria-live', 'polite');
   output.setAttribute('role', 'region');
   if (!text) {
@@ -138,14 +141,20 @@ wordExplainerBtn.addEventListener('click', async () => {
       const defText = document.createElement('div');
       defText.className = 'definition-output';
       defText.textContent = `${word}: ${definition}`;
+      defText.setAttribute('role', 'note');
+      defText.setAttribute('aria-live', 'polite');
       output.appendChild(defText);
     } catch (err) {
       const errorText = document.createElement('div');
       errorText.className = 'definition-output';
       errorText.textContent = `Could not fetch definition for "${word}".`;
+      errorText.setAttribute('role', 'note');
+      errorText.setAttribute('aria-live', 'polite');
       output.appendChild(errorText);
     }
   }
+
+  wordExplainerBtn.setAttribute('aria-pressed', 'false');
 
   loadingIndicator.textContent = "";
   loadingIndicator.classList.remove("loading");

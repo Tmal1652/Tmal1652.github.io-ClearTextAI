@@ -34,25 +34,25 @@
       <div class="input-panel">
         <div class="input-group">
           <label for="inputText">Enter Text:</label>
-          <textarea id="inputText" rows="8" placeholder="Paste complex text here..." aria-label="Input text area for ClearText AI processing" role="textbox"></textarea>
+          <textarea id="inputText" rows="8" placeholder="Paste complex text here..." aria-label="Text input area" role="textbox"></textarea>
         </div>
         <div class="floating-tab-bar">
           <button id="simplifyBtn"><i class="fas fa-brain"></i><span>Simplify</span><span class="tooltip" role="tooltip">Simplifies text to make it easier to read</span></button>
           <button id="summarizeBtn"><i class="fas fa-file-lines"></i><span>Summarize</span><span class="tooltip" role="tooltip">Summarizes long text into key points</span></button>
           <button id="speakBtn"><i class="fas fa-volume-up"></i><span>Speak</span><span class="tooltip" role="tooltip">Reads your text aloud</span></button>
-          <button id="explainBtn" type="button" title="This feature is in development and may not work as expected." aria-describedby="explainDesc" aria-label="Word Explainer beta feature button">
+          <button id="explainBtn" aria-label="Word Explainer button (beta, in development)" aria-describedby="explainDesc" type="button" title="This feature is in development and may not work as expected.">
             <i class="fas fa-book-open"></i>
             <span>Word Explainer <sup style="font-size: 0.65em; color: orange;">Beta</sup></span>
             <span class="tooltip" role="tooltip">Define complex words — In development</span>
           </button>
-          <span id="explainDesc" class="sr-only">This feature is in development and may not work as expected</span>
+          <span id="explainDesc" class="sr-only">This feature is still being developed and may not work as expected.</span>
           <button id="clearBtn"><i class="fas fa-broom"></i><span>Clear</span><span class="tooltip" role="tooltip">Clear all input and output</span></button>
         </div>
       </div>
       <div class="output-panel">
         <div class="output-group">
           <h2>Output:</h2>
-          <div id="output" tabindex="0" aria-label="AI-generated output from your input text" role="region"></div>
+          <div id="output" tabindex="0" aria-label="Output area" role="region"></div>
           <div id="loadingIndicator" aria-live="polite"></div>
         </div>
       </div>
@@ -73,7 +73,7 @@
 
   <footer>
     <p>&copy; 2025 Tyler Malovrh. All rights reserved.</p>
-    <p><strong>Version:</strong> v0.9.2 Beta — This tool is still in development.</p>
+    <p><strong>Version:</strong> v0.9.3 Beta — This tool is still in development.</p>
   </footer>
   <script src="script.js"></script>
 </body>
