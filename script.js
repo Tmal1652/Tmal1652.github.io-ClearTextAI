@@ -9,6 +9,20 @@ const output = document.getElementById('output');
 const wordExplainerBtn = document.getElementById('explainBtn'); // Fix: match the HTML ID
 const definitionBox = document.getElementById('definitionBox');
 
+const accessibilityToggle = document.getElementById('accessibilityToggle');
+const body = document.body;
+
+accessibilityToggle?.addEventListener('click', () => {
+  body.classList.toggle('accessibility-mode');
+});
+
+// Optional: Keyboard accessibility (toggle with Enter/Space)
+accessibilityToggle?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    body.classList.toggle('accessibility-mode');
+    e.preventDefault();
+  }
+});
 
 simplifyBtn.addEventListener('click', async () => {
   const userText = inputText.value;

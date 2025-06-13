@@ -989,3 +989,104 @@ button {
   outline: 2px solid #00bfff;
   outline-offset: 3px;
 }
+
+/* --- Accessibility Mode Toggle Styles --- */
+.accessibility-toggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accessibility-toggle::before {
+  content: "";
+  background-image: url('web.png');
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: center;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 2px solid #00bfff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  vertical-align: middle;
+}
+
+/* Tooltip styles for accessibility icon */
+.accessibility-toggle::after {
+  content: "Accessibility Mode";
+  position: absolute;
+  left: 60px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10001;
+}
+
+.accessibility-toggle:hover::after,
+.accessibility-toggle:focus-visible::after {
+  opacity: 1;
+}
+/* --- Accessibility Mode Styles --- */
+body.accessibility-mode {
+  font-size: 1.25rem;
+  line-height: 1.9;
+  letter-spacing: 0.5px;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.accessibility-mode .output-panel,
+body.accessibility-mode .input-panel,
+body.accessibility-mode textarea,
+body.accessibility-mode button {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #00bfff !important;
+  box-shadow: 0 0 12px #00bfff !important;
+}
+
+body.accessibility-mode button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.accessibility-mode a {
+  color: #00bfff;
+  text-decoration: underline;
+}
+
+body.accessibility-mode a:focus,
+body.accessibility-mode button:focus,
+body.accessibility-mode textarea:focus {
+  outline: 3px solid #00bfff !important;
+  outline-offset: 3px;
+}
+
+body.accessibility-mode .floating-tab-bar button {
+  background-color: #111 !important;
+  color: #fff !important;
+  border: 2px solid #00bfff !important;
+}
+
+body.accessibility-mode .floating-tab-bar button:hover {
+  background-color: #222 !important;
+  color: #00bfff !important;
+  box-shadow: 0 0 10px #00bfff !important;
+}
