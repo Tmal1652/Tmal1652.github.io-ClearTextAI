@@ -6,6 +6,19 @@
   <title>ClearText AI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
   <header class="floating-header">
@@ -14,30 +27,32 @@
       ClearText<span style="font-weight: 300;">AI</span>
     </h1>
   </header>
-  <div class="accessibility-toggle" id="accessibilityToggle" tabindex="0" aria-label="Enable Accessibility Mode"></div>
+  <div class="accessibility-toggle" id="accessibilityToggle" tabindex="0" role="button" aria-label="Toggle accessibility mode for improved readability and navigation" aria-pressed="false" aria-live="polite" aria-controls="inputText output"></div>
 
   <main>
     <div class="glass-columns">
       <div class="input-panel">
         <div class="input-group">
           <label for="inputText">Enter Text:</label>
-          <textarea id="inputText" rows="8" placeholder="Paste complex text here..."></textarea>
+          <textarea id="inputText" rows="8" placeholder="Paste complex text here..." aria-label="Input text area for ClearText AI processing" role="textbox"></textarea>
         </div>
         <div class="floating-tab-bar">
-          <button id="simplifyBtn"><i class="fas fa-brain"></i><span>Simplify</span></button>
-          <button id="summarizeBtn"><i class="fas fa-file-lines"></i><span>Summarize</span></button>
-          <button id="speakBtn"><i class="fas fa-volume-up"></i><span>Speak</span></button>
-          <button id="explainBtn" type="button" title="This feature is in development and may not work as expected.">
+          <button id="simplifyBtn"><i class="fas fa-brain"></i><span>Simplify</span><span class="tooltip" role="tooltip">Simplifies text to make it easier to read</span></button>
+          <button id="summarizeBtn"><i class="fas fa-file-lines"></i><span>Summarize</span><span class="tooltip" role="tooltip">Summarizes long text into key points</span></button>
+          <button id="speakBtn"><i class="fas fa-volume-up"></i><span>Speak</span><span class="tooltip" role="tooltip">Reads your text aloud</span></button>
+          <button id="explainBtn" type="button" title="This feature is in development and may not work as expected." aria-describedby="explainDesc" aria-label="Word Explainer beta feature button">
             <i class="fas fa-book-open"></i>
             <span>Word Explainer <sup style="font-size: 0.65em; color: orange;">Beta</sup></span>
+            <span class="tooltip" role="tooltip">Define complex words — In development</span>
           </button>
-          <button id="clearBtn"><i class="fas fa-broom"></i><span>Clear</span></button>
+          <span id="explainDesc" class="sr-only">This feature is in development and may not work as expected</span>
+          <button id="clearBtn"><i class="fas fa-broom"></i><span>Clear</span><span class="tooltip" role="tooltip">Clear all input and output</span></button>
         </div>
       </div>
       <div class="output-panel">
         <div class="output-group">
           <h2>Output:</h2>
-          <div id="output" tabindex="0" aria-label="Simplified or summarized text output"></div>
+          <div id="output" tabindex="0" aria-label="AI-generated output from your input text" role="region"></div>
           <div id="loadingIndicator" aria-live="polite"></div>
         </div>
       </div>

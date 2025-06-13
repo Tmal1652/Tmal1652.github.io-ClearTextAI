@@ -881,8 +881,10 @@ button {
 
 /* --- Improved Keyboard Accessibility --- */
 :focus-visible {
-  outline: 3px solid #00bfff;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff66, 0 0 10px #7c3cff88;
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 8px;
 }
 
 /* --- Enhanced 3D Glass Feel --- */
@@ -894,22 +896,36 @@ button {
   transform: translateZ(0);
 }
 /* Tooltip styles */
+/* --- Futuristic Glass Tooltip Styles --- */
 .tooltip {
   position: absolute;
-  background: rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.15);
   color: #fff;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
   font-size: 0.85rem;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 10000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.2);
+  animation: floatTooltip 5s ease-in-out infinite;
 }
 
 .tooltip-visible {
   opacity: 1;
+  transform: translateY(-6px);
+}
+
+@keyframes floatTooltip {
+  0%, 100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* HUD notification styles */
@@ -1089,4 +1105,52 @@ body.accessibility-mode .floating-tab-bar button:hover {
   background-color: #222 !important;
   color: #00bfff !important;
   box-shadow: 0 0 10px #00bfff !important;
+}
+/* --- Subtle Floating Animation for All Buttons --- */
+button {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* --- Pulsing Glow Effect for Output Panel --- */
+#output.active {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(0,123,255,0.3);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(0,123,255,0.6);
+  }
+}
+
+/* --- Modern Glass Scrollbar Styles --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 123, 255, 0.4);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 123, 255, 0.6);
 }
