@@ -204,20 +204,9 @@ function trapFocus(container) {
   });
 }
 
-// Device detection and UI adjustment for mobile/tablet
-function isMobileOrTablet() {
-  return /Mobi|Android|iPad|iPhone/i.test(navigator.userAgent);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (isMobileOrTablet()) {
-    document.body.classList.add('mobile-ui');
-  }
-});
-
 accessibilityToggle?.addEventListener('click', () => {
   if (document.body.classList.contains('accessibility-mode')) {
-    setTimeout(() => trapFocus(document.body), 0);
+    trapFocus(document.body);
     // Visually indicate accessibility mode
     document.body.classList.add('accessibility-highlight');
     setTimeout(() => {
