@@ -178,19 +178,6 @@ textarea, #output, #output.active {
   transform: translateY(-2px) scale(1.04);
 }
 
-/* 6. Responsive: stack panels on mobile */
-@media (max-width: 900px) {
-  .glass-columns {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: stretch;
-  }
-  .input-panel,
-  .output-panel {
-    max-width: 98vw;
-    margin: 0 auto;
-  }
-}
 
 /* 7. Accessibility: readable text */
 body, .input-panel, .output-panel, textarea, #output, .floating-header {
@@ -482,162 +469,8 @@ button:active {
   display: none;
 }
 
-@media (max-width: 600px) {
-  .glass-card {
-    margin: 7rem 1rem 2rem;
-    padding: 1.25rem 1rem 2rem;
-  }
 
-  .buttons {
-    flex-direction: column;
-    gap: 0.85rem;
-  }
 
-  button {
-    width: 100%;
-  }
-
-  textarea {
-    width: 100%;
-    max-width: 100%;
-    font-size: 1rem;
-    padding: 1rem;
-  }
-
-  .about {
-    padding: 1.25rem 1.25rem;
-    font-size: 0.95rem;
-  }
-
-  .floating-header {
-    font-size: 1.2rem;
-    padding: 0.75rem;
-  }
-}
-
-/* --- Mobile Experience Enhancements --- */
-
-@media (max-width: 768px) {
-  /* Stack panels vertically */
-  .glass-columns {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
-  }
-
-  /* Ensure .input-container and .output-container use full width and proper margin */
-  .input-container,
-  .output-container {
-    width: 100%;
-    margin: 1rem auto;
-  }
-
-  /* Add extra spacing below output container for tab bar */
-  .output-container {
-    margin-bottom: 3rem;
-  }
-
-  /* Refined input and output panels for mobile */
-  .input-panel,
-  .output-panel {
-    min-width: 0;
-    max-width: 96vw;
-    width: 100%;
-    margin: 0 auto;
-    padding: 1.25rem 1rem;
-    border-radius: 1rem;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  /* Refactor header h1 inside mobile view */
-  header h1 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  /* Responsive font sizes for input fields and buttons */
-  input[type="text"], textarea, button {
-    font-size: 1rem;
-  }
-
-  /* Touch-friendly button sizes */
-  button {
-    min-height: 48px;
-    padding: 0.75rem 1rem;
-  }
-
-  /* Update .floating-tab-bar for better visibility and spacing */
-  .floating-tab-bar {
-    flex-direction: column;
-    gap: 0.5rem;
-    bottom: 0.5rem;
-    padding: 0.8rem;
-    width: 90%;
-    max-width: 360px;
-  }
-
-  /* Adjust textarea for better usability */
-  textarea {
-    font-size: 1rem;
-    padding: 0.75rem;
-    border-radius: 1rem;
-  }
-
-  /* Refined floating header for smaller screens */
-  .floating-header {
-    font-size: 1.1rem;
-    padding: 0.6rem 1rem;
-    text-align: center;
-    line-height: 1.4;
-  }
-
-  /* Adjust about section */
-  .about {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  /* Footer adjustments */
-  footer {
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Further adjustments for very small screens */
-  .input-panel,
-  .output-panel {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .floating-tab-bar button {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  textarea {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-
-  .floating-header {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
-
-  .about {
-    font-size: 0.8rem;
-  }
-
-  footer {
-    font-size: 0.7rem;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -705,23 +538,6 @@ button:active {
     font-size: 1rem;
     line-height: 1.6;
     transition: all 0.3s ease;
-  }
-}
-@media (max-width: 768px) {
-  .glass-card {
-    margin-top: 8rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-  }
-
-  .buttons {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  button {
-    min-width: 130px;
-    text-align: center;
   }
 }
 
@@ -1511,60 +1327,44 @@ button:active {
   opacity: 0.5;
 }
 /* --- Responsive Layout for Tablets and Smartphones --- */
-@media (max-width: 1024px) {
-  .container,
-  .output-card,
-  .input-area,
-  .tab-bar {
-    width: 90%;
-    margin: 0 auto;
-    flex-direction: column;
-  }
 
-  .tab-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    gap: 0.5rem;
-  }
+/* --- Mobile Fixes for Small Screens (≤ 480px) --- */
 
-  .output-card,
-  .input-area {
-    min-height: auto;
-    padding: 1.5rem;
-    font-size: 1rem;
-  }
-
-  button {
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
+/* Prevent horizontal overflow */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
+/* --- Desktop Only Warning for Small Screens --- */
+@media (max-width: 768px) {
+  body::before,
+  main,
+  .glass-card,
+  .input-panel,
+  .output-panel,
+  .floating-tab-bar,
+  .accessibility-toggle,
+  header,
+  footer {
+    display: none !important;
+  }
 
-@media (max-width: 600px) {
-  .tab-bar {
-    flex-direction: column;
+  body::after {
+    content: "📱 This tool is currently optimized for desktop use only. Please visit on a larger screen for the full ClearText AI experience.";
+    display: flex;
+    justify-content: center;
     align-items: center;
-  }
-
-  .output-card,
-  .input-area {
-    padding: 1rem;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  .accessibility-toggle {
-    bottom: 1rem;
-    left: 1rem;
+    height: 100vh;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 2rem;
+    color: #f0f8ff;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 40px rgba(0,123,255,0.2);
+    border: 2px solid rgba(0,123,255,0.3);
+    border-radius: 1.5rem;
+    margin: 1rem;
   }
 }
