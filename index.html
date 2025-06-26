@@ -22,7 +22,7 @@
 </head>
 <body>
   <header class="floating-header">
-    <h1 style="border-radius: 1rem; background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <h1 class="fluid-glass" style="padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
       <img src="logo1.png" alt="ClearText AI logo" width="48" height="48" style="border-radius: 50%; background: transparent;">
       ClearText<span style="font-weight: 300;">AI</span>
     </h1>
@@ -31,12 +31,12 @@
 
   <main>
     <div class="glass-columns">
-      <div class="input-panel">
+      <div class="input-panel fluid-glass">
         <div class="input-group">
           <label for="inputText">Enter Text:</label>
           <textarea id="inputText" rows="8" placeholder="Paste complex text here..." aria-label="Text input area" role="textbox"></textarea>
         </div>
-        <div class="floating-tab-bar">
+        <div class="floating-tab-bar fluid-glass">
           <button id="simplifyBtn"><i class="fas fa-brain"></i><span>Simplify</span><span class="tooltip" role="tooltip">Simplifies text to make it easier to read</span></button>
           <button id="summarizeBtn"><i class="fas fa-file-lines"></i><span>Summarize</span><span class="tooltip" role="tooltip">Summarizes long text into key points</span></button>
           <button id="speakBtn"><i class="fas fa-volume-up"></i><span>Speak</span><span class="tooltip" role="tooltip">Reads your text aloud</span></button>
@@ -49,7 +49,7 @@
           <button id="clearBtn"><i class="fas fa-broom"></i><span>Clear</span><span class="tooltip" role="tooltip">Clear all input and output</span></button>
         </div>
       </div>
-      <div class="output-panel">
+      <div class="output-panel fluid-glass">
         <div class="output-group">
           <h2>Output:</h2>
           <div id="output" tabindex="0" aria-label="Output area" role="region"></div>
@@ -73,7 +73,7 @@
 
   <footer>
     <p>&copy; 2025 Tyler Malovrh. All rights reserved.</p>
-    <p><strong>Version:</strong> v0.9.3 Beta — This tool is still in development.</p>
+    <p><strong>Version:</strong> v0.9.6 Beta — This tool is still in development.</p>
   </footer>
   <script src="script.js"></script>
 </body>

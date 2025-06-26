@@ -42,7 +42,7 @@
     transform: translateX(100%);
   }
 }
-/* --- Fluid Glass UI Overhaul --- */
+/* --- Glass UI Overhaul --- */
 
 /* 1. Animated fluid glass background */
 body::before {
@@ -618,6 +618,12 @@ footer {
   padding: 1rem 0;
   font-size: 0.9rem;
   color: #666;
+}
+
+/* Accessibility mode: Footer styles */
+body.accessibility-mode footer {
+  color: #fff !important;
+  background-color: #000 !important;
 }
 
 .glass-columns {
@@ -1367,4 +1373,149 @@ html, body {
     border-radius: 1.5rem;
     margin: 1rem;
   }
+}
+/* --- Fluid Glass Base --- */
+.fluid-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset 0 0 0.5px rgba(255, 255, 255, 0.6),
+    0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* --- Icon Bubble Button --- */
+.glass-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* --- Media Control Glass Widget --- */
+.media-glass-widget {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.75rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  color: #fff;
+}
+
+.media-glass-widget img {
+  width: 48px;
+  height: 48px;
+  border-radius: 1rem;
+}
+
+.media-glass-widget .song-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.media-glass-widget .song-info h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.media-glass-widget .song-info p {
+  font-size: 0.875rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* --- Color Scheme: Light, Dark, Accessibility order --- */
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #000;
+  }
+  .floating-header,
+  .glass-card,
+  .input-panel,
+  .output-panel,
+  textarea,
+  .about,
+  .output-group,
+  .output-group h2,
+  #output,
+  #output.active,
+  #outputHeading {
+    color: #000;
+  }
+  .about,
+  .about h2,
+  .about p,
+  .about li {
+    color: #000;
+  }
+  button {
+    color: #000;
+  }
+  #loadingIndicator {
+    color: #666;
+  }
+  footer {
+    color: #000;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+  }
+  .floating-header,
+  .glass-card,
+  .input-panel,
+  .output-panel,
+  textarea,
+  .about,
+  .output-group,
+  .output-group h2,
+  #output,
+  #output.active,
+  #outputHeading {
+    color: #fff;
+  }
+  .about,
+  .about h2,
+  .about p,
+  .about li {
+    color: #fff;
+  }
+  footer {
+    color: #eee;
+  }
+}
+
+body.accessibility-mode .output-group,
+body.accessibility-mode .output-group h2,
+body.accessibility-mode #output,
+body.accessibility-mode #output.active,
+body.accessibility-mode #outputHeading,
+body.accessibility-mode .about {
+  color: #fff !important;
 }
