@@ -44,7 +44,7 @@
 }
 /* --- Glass UI Overhaul --- */
 
-/* 1. Animated fluid glass background */
+/* 1. Animated glass background */
 body::before {
   content: '';
   position: fixed;
@@ -218,7 +218,7 @@ textarea:focus, .floating-tab-bar button:focus {
   }
 }
 
-/* --- End Fluid Glass UI Overhaul --- */
+/* --- End Glass UI Overhaul --- */
 
 /* Output fade-in animation */
 #output,
